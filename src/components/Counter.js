@@ -12,6 +12,21 @@ export default class Counter extends Component {
     };
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.number !== this.props.number) {
+      this.setState({number:0})
+
+    } 
+      else if (this.state.number > prevState.number  ) {
+      this.props.onCalculate(1);
+      console.log("no expected")
+    } else if (this.state.number < prevState.number  ) {
+      this.props.onCalculate(-1);
+      console.log("NONONONONO" +this.state.number  +  prevState.number );
+      console.log(prevProps.number+ " haha " +this.props.number )
+    }
+  }
+
   onIncrease() {
     this.setState((prevState) => ({
       number: prevState.number + 1,
