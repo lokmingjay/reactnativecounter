@@ -29,6 +29,7 @@ export default class Counter extends Component {
   render() {
     return (
       <div>
+        <span>{this.props.index}</span>
         <button onClick={this.onIncrease}>+</button>
         <span>
           {this.state.number}

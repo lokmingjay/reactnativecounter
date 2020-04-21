@@ -17,7 +17,6 @@ export default class CounterGroup extends Component {
 
   onChange(event) {
     console.log(event.type);
-    console.log("Testing");
     const value = event.target.value;
     this.setState({
       size: value.length > 0 ? parseInt(value) : 0,
@@ -31,15 +30,15 @@ export default class CounterGroup extends Component {
   }
 
   render() {
-    let counters = this.initArray(this.state.size);
+    const size = this.state.size;
+    let counters = this.initArray(size);
     return (
       <div>
         <form>
           <input onChange={this.onChange} type="text" value={this.state.size} />
         </form>
-
-        {counters.map((value) => (
-          <Counter key={value} />
+        {counters.map((value,index) => (
+          <Counter key={value} index = {index} />
         ))}
       </div>
     );
